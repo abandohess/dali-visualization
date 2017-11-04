@@ -1,6 +1,5 @@
 import React from 'react'
 import vis from 'vis'
-import wiki from 'wikijs'
 import { Card, Icon } from 'semantic-ui-react'
 import EmployeeModal from './EmployeeModal.js'
 
