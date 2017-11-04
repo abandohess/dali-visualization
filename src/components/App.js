@@ -2,7 +2,7 @@ import React from 'react'
 import vis from 'vis'
 import wiki from 'wikijs'
 import { Card, Icon } from 'semantic-ui-react'
-import EmployeeModal from './CardExampleCardProps.js'
+import EmployeeModal from './EmployeeModal.js'
 
 class App extends React.Component {
   constructor() {
@@ -41,20 +41,23 @@ class App extends React.Component {
       options
     );
 
-    network.on("doubleClick", (params) => {
-      if (params.nodes.length > 0) {
-        this.addMember(params.nodes[0]);
-      }
-    });
-
     network.on("click", (params) => {
       if (params.nodes.length > 0) {
         document.getElementById(params.nodes[0] + 'Button').click();
       }
     });
+
+    this.interval = setInterval(() => {
+      this.addMember();
+    }, 4000);
   }
 
-  addMember(fromNodeTitle) {
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  addMember() {
     let len = this.lastRoundOfEmployees.length;
     for (let i = 0; i < len; i++) {
       let oldNode = this.lastRoundOfEmployees.splice(0, 1);
