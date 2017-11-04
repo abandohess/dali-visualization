@@ -1,0 +1,12 @@
+.invisible {
+  position:absolute;
+  visibility: hidden;
+}
+
+.larger {
+  font-size: 4em !important;
+}
+
+.lessLarge{
+  font-size: 1.5em;
+}
